@@ -49,7 +49,11 @@ export function WorkExperience() {
                 <Heading variant="heading-strong-l">
                   {experience.company}
                 </Heading>
-                <Badge size="s" variant="brand-alpha-weak">
+                <Badge
+                  background="brand-alpha-weak"
+                  onBackground="brand-strong"
+                  style={{ width: "fit-content" }}
+                >
                   {experience.timeframe}
                 </Badge>
               </Row>

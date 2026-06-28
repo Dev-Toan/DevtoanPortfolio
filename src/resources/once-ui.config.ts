@@ -143,8 +143,6 @@ export {
   baseURL,
   fonts,
   style,
-  schema,
-  sameAs,
   effects,
   dataStyle,
 };
