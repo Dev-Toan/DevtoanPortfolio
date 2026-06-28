@@ -1,0 +1,393 @@
+/* :root {
+  /*
+  /* Override default variables here */
+/*
+  --font-size-display-multiplier:   1;
+  --font-size-heading-multiplier:   1;
+  --font-size-body-multiplier:      1;
+  --font-size-label-multiplier:     1;
+
+  --line-height-display-multiplier: 1;
+  --line-height-heading-multiplier: 1;
+  --line-height-body-multiplier:    1;
+  --line-height-label-multiplier:   1;
+
+  --default-border:        var(--neutral-border-medium);
+
+  /*
+  /* Example setup for custom colors */
+/* Generate at: https://once-ui.com/customize */
+/*
+  --scheme-brand-100: #08002f;
+  --scheme-brand-200:  #04025c;
+  --scheme-brand-300:  #1f398e;
+  --scheme-brand-400:  #3856ae;
+  --scheme-brand-500:  #5071cc;
+  --scheme-brand-600:  #6f94f1;
+  --scheme-brand-700:  #8db3ff;
+  --scheme-brand-800:  #b2dbff;
+  --scheme-brand-900:  #bfe8ff;
+  --scheme-brand-1000: #ccf6ff;
+  --scheme-brand-1100: #d2fcff;
+  --scheme-brand-1200: #d2fcff;
+  --scheme-brand-600-10: rgba(111,148,241,0.1);
+  --scheme-brand-600-30: rgba(111,148,241,0.3);
+  --scheme-brand-600-50: rgba(111,148,241,0.5);
+
+  --scheme-accent-100:  #030b10;
+  --scheme-accent-200:  #0d181d;
+  --scheme-accent-300:  #364248;
+  --scheme-accent-400:  #505d64;
+  --scheme-accent-500:  #69777e;
+  --scheme-accent-600:  #8a989f;
+  --scheme-accent-700:  #a8b7bf;
+  --scheme-accent-800:  #c8d7df;
+  --scheme-accent-900:  #d5e4ec;
+  --scheme-accent-1000: #e2f1f9;
+  --scheme-accent-1100: #e9f8ff;
+  --scheme-accent-1200: #efffff;
+  --scheme-accent-600-10: rgba(138,152,159,0.1);
+  --scheme-accent-600-30: rgba(138,152,159,0.3);
+  --scheme-accent-600-50: rgba(138,152,159,0.5);
+
+  --scheme-neutral-100:  #020b10;
+  --scheme-neutral-200:  #0b181d;
+  --scheme-neutral-300:  #344248;
+  --scheme-neutral-400:  #4f5d64;
+  --scheme-neutral-500:  #68777e;
+  --scheme-neutral-600:  #89989f;
+  --scheme-neutral-700:  #a7b7be;
+  --scheme-neutral-800:  #c7d7df;
+  --scheme-neutral-900:  #d4e4ec;
+  --scheme-neutral-1000: #e1f2f9;
+  --scheme-neutral-1100: #e7f8ff;
+  --scheme-neutral-1200: #eeffff;
+  --scheme-neutral-600-10: rgba(137,152,159,0.1);
+  --scheme-neutral-600-30: rgba(137,152,159,0.3);
+  --scheme-neutral-600-50: rgba(137,152,159,0.5);
+  /*
+}*/
+
+/* RGB border animation with spinning conic gradient and premium glowing shadows */
+.rgb-border-wrapper {
+  position: relative;
+  display: inline-flex;
+  padding: 3px;
+  /* border thickness */
+  border-radius: 50%;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.25), 0 0 40px rgba(127, 0, 255, 0.15);
+}
+
+.rgb-border-wrapper:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(0, 242, 254, 0.4), 0 0 60px rgba(255, 0, 127, 0.25);
+}
+
+.rgb-border-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg,
+      #00f2fe 0%,
+      /* Cyan */
+      #5a7bff 20%,
+      /* Xanh tím nhạt (trung gian) */
+      #7f00ff 35%,
+      /* Purple */
+      #e01e7d 50%,
+      /* Hồng tím (trung gian) */
+      #ff007f 65%,
+      /* Magenta */
+      #ff0844 80%,
+      /* Red */
+      #00f2fe 100%
+      /* Cyan loop */
+    );
+  animation: rgb-spin 1s linear infinite;
+  /* Higher spin speed */
+  z-index: 1;
+}
+
+/* Inner overlay to cover the center and allow only the 3px border to show */
+.rgb-border-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #0b181d;
+  /* Matches deep dark theme background */
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Avatar container inside must sit above the pseudo elements */
+.rgb-border-wrapper>* {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+@keyframes rgb-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* RGB Card Border Animation */
+.rgb-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-l) !important;
+  border: none !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.rgb-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg,
+      #00f2fe 0%,
+      /* Cyan */
+      #5a7bff 20%,
+      /* Xanh tím nhạt (trung gian) */
+      #7f00ff 35%,
+      /* Purple */
+      #e01e7d 50%,
+      /* Hồng tím (trung gian) */
+      #ff007f 65%,
+      /* Magenta */
+      #ff0844 80%,
+      /* Red */
+      #00f2fe 100%
+      /* Cyan loop */
+    );
+  animation: rgb-spin 1s linear infinite;
+  /* Higher spin speed */
+  z-index: 1;
+  opacity: 1;
+  /* Always bright, no hover required */
+}
+
+/* Inner overlay to cover the center and allow only the 2px border to show */
+.rgb-card::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  /* border thickness */
+  background: #0b181d;
+  /* Matches dark theme background */
+  border-radius: calc(var(--radius-l) - 2px) !important;
+  z-index: 2;
+  transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rgb-card:hover::after {
+  background: #11222a;
+  /* Slightly lighter/more glowing background on hover */
+}
+
+/* Keep card content above pseudo elements */
+.rgb-card>* {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+/* RGB Text Gradient Animation */
+.rgb-text {
+  background: linear-gradient(90deg,
+      #00f2fe 0%,
+      /* Cyan */
+      #5a7bff 20%,
+      /* Xanh tím nhạt (trung gian) */
+      #7f00ff 35%,
+      /* Purple */
+      #e01e7d 50%,
+      /* Hồng tím (trung gian) */
+      #ff007f 65%,
+      /* Magenta */
+      #ff0844 80%,
+      /* Red */
+      #00f2fe 100%
+      /* Cyan loop */
+    );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent !important;
+  /* Force transparency for clipping mask */
+  animation: rgb-text-anim 1s linear infinite;
+  /* Increased color flow speed */
+  display: inline-block;
+}
+
+@keyframes rgb-text-anim {
+  to {
+    background-position: -200% center;
+  }
+}
+
+/* RGB Menu Bar Border Animation */
+.rgb-menu {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px !important;
+  /* perfectly rounded capsule shape */
+  border: none !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.rgb-menu::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg,
+      #00f2fe 0%,
+      #5a7bff 20%,
+      #7f00ff 35%,
+      #e01e7d 50%,
+      #ff007f 65%,
+      #ff0844 80%,
+      #00f2fe 100%);
+  animation: rgb-spin 3s linear infinite;
+  /* Rotation speed 3s for glowing effect */
+  z-index: 1;
+}
+
+/* Inner overlay to cover the center and allow only the 1.5px border to show */
+.rgb-menu::after {
+  content: '';
+  position: absolute;
+  inset: 1.5px;
+  /* thin border thickness */
+  background: #0b181d;
+  /* Matches dark theme background */
+  border-radius: 9999px !important;
+  z-index: 2;
+}
+
+/* Keep menu icons and buttons above the pseudoelements */
+.rgb-menu>* {
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+/* Card hover animation: lift + colorful glow shadow */
+.rgb-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rgb-card:hover {
+  transform: translateY(-6px);
+  /* Hover lift */
+  box-shadow: 0 12px 40px rgba(0, 242, 254, 0.15), 0 24px 80px rgba(127, 0, 255, 0.1);
+}
+
+/* Aurora Background Glows */
+.aurora-glow-1 {
+  position: absolute;
+  top: 5%;
+  left: -5%;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.1) 0%, rgba(127, 0, 255, 0) 70%);
+  filter: blur(80px);
+  z-index: -1;
+  pointer-events: none;
+  animation: float-aurora-1 20s infinite alternate ease-in-out;
+}
+
+.aurora-glow-2 {
+  position: absolute;
+  top: 15%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 0, 127, 0.08) 0%, rgba(0, 82, 212, 0) 70%);
+  filter: blur(100px);
+  z-index: -1;
+  pointer-events: none;
+  animation: float-aurora-2 25s infinite alternate ease-in-out;
+}
+
+@keyframes float-aurora-1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(80px, 40px) scale(1.1);
+  }
+}
+
+@keyframes float-aurora-2 {
+  0% {
+    transform: translate(0, 0) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-80px, -40px) scale(0.9);
+  }
+}
+
+/* Shimmer Badge continuous sweeping shine effect */
+.shimmer-badge {
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1.5px solid rgba(0, 242, 254, 0.2) !important;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.shimmer-badge:hover {
+  border-color: rgba(0, 242, 254, 0.4) !important;
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.15) !important;
+}
+
+.shimmer-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0, 242, 254, 0.05) 25%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(0, 242, 254, 0.05) 75%,
+      transparent 100%);
+  transform: skewX(-25deg) translateX(-150%);
+  animation: continuous-shimmer 3s infinite cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+@keyframes continuous-shimmer {
+  0% {
+    transform: skewX(-25deg) translateX(-150%);
+  }
+
+  90% {
+    transform: skewX(-25deg) translateX(150%);
+  }
+
+  100% {
+    transform: skewX(-25deg) translateX(150%);
+  }
+}
