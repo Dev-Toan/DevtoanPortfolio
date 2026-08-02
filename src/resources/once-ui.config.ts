@@ -18,6 +18,9 @@ const routes: RoutesConfig = {
   "/": true,
   "/about": true,
   "/work": true,
+  // Admin analytics dashboard. Enabled so RouteGuard doesn't 404 it; the page
+  // gates itself behind ADMIN_PASSWORD and it's excluded from the sitemap.
+  "/admin": true,
 };
 
 const display: DisplayConfig = {

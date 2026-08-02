@@ -10,7 +10,8 @@ export default async function sitemap() {
   const works: never[] = [];
 
   const activeRoutes = Object.keys(routesConfig).filter(
-    (route) => routesConfig[route as keyof typeof routesConfig],
+    (route) =>
+      routesConfig[route as keyof typeof routesConfig] && route !== "/admin",
   );
 
   const routes = activeRoutes.map((route) => ({

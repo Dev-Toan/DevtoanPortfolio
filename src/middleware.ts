@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse, NextFetchEvent } from "next/server";
+import { recordVisit } from "@/lib/analytics";
 
-export function middleware(request: NextRequest) {
+export function middleware(request: NextRequest, event: NextFetchEvent) {
   // IP thật của visitor (Vercel đặt vào x-forwarded-for, IP đầu tiên là client).
   const forwardedFor = request.headers.get("x-forwarded-for");
   const ip =
@@ -9,13 +10,44 @@ export function middleware(request: NextRequest) {
     "unknown";
 
   const country = request.headers.get("x-vercel-ip-country") ?? "-";
-  const city = request.headers.get("x-vercel-ip-city") ?? "-";
+  const city = decodeCity(request.headers.get("x-vercel-ip-city"));
   const path = request.nextUrl.pathname;
+  const userAgent = request.headers.get("user-agent") ?? "";
+  const referrer = request.headers.get("referer") ?? "";
 
-  // Ghi ra Vercel Function Logs cho MỌI trang visitor mở.
-  console.log(`[visitor] ip=${ip} country=${country} city=${city} path=${path}`);
+  // Không thống kê chính trang admin để tránh làm nhiễu số liệu.
+  const isAdmin = path === "/admin" || path.startsWith("/admin/");
+
+  if (!isAdmin) {
+    // Ghi mỗi visit vào Redis — fire-and-forget, không chặn việc trả trang.
+    event.waitUntil(
+      recordVisit({
+        ip,
+        country,
+        city,
+        path,
+        userAgent,
+        referrer,
+        selfHost: request.nextUrl.hostname,
+        now: Date.now(),
+      }),
+    );
+
+    // Vẫn giữ log ra Vercel Function Logs để tiện debug.
+    console.log(`[visitor] ip=${ip} country=${country} city=${city} path=${path}`);
+  }
 
   return NextResponse.next();
+}
+
+// Vercel city header có thể được URL-encode (vd. "Ho%20Chi%20Minh").
+function decodeCity(city: string | null): string {
+  if (!city) return "-";
+  try {
+    return decodeURIComponent(city);
+  } catch {
+    return city;
+  }
 }
 
 // Chỉ chạy trên các trang thật, bỏ qua static assets, _next, favicon và /api.
