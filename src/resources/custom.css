@@ -391,3 +391,12 @@
     transform: skewX(-25deg) translateX(150%);
   }
 }
+
+/* Prevent horizontal overflow (black gap on the right in mobile view).
+   The aurora glows are positioned off-screen (right: -10%) and can push the
+   document wider than the viewport, so we clip horizontal overflow globally. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}

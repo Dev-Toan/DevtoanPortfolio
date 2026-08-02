@@ -89,7 +89,7 @@ export default function Home() {
             s={{ horizontal: "center", style: { textAlign: "center" } }}
           >
             <RevealFx translateY="4" fillWidth paddingBottom="8">
-              <Heading wrap="nowrap" variant="display-strong-l" className="rgb-text">
+              <Heading wrap="balance" variant="display-strong-l" className="rgb-text">
                 {home.headline}
               </Heading>
             </RevealFx>
