@@ -72,7 +72,13 @@ export const Header = () => {
           position: "fixed",
         }}
       >
-        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
+        <Row
+          paddingLeft="12"
+          fillWidth
+          vertical="center"
+          textVariant="body-default-s"
+          s={{ hide: true }}
+        >
           {"DevToan2k4"}
         </Row>
         <Row fillWidth horizontal="center">
@@ -137,7 +143,7 @@ export const Header = () => {
             </Row>
           </Row>
         </Row>
-        <Flex fillWidth horizontal="end" vertical="center">
+        <Flex fillWidth horizontal="end" vertical="center" s={{ hide: true }}>
           <Flex
             paddingRight="12"
             horizontal="end"

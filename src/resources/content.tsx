@@ -123,14 +123,38 @@ const about: About = {
         role: "Thực tập sinh Mobile",
         achievements: [
           <>
-            Nghiên cứu và ứng dụng ngôn ngữ Kotlin trong công việc phát triển ứng dụng di động mobile trên nền tảng android.
+            Trực tiếp tham gia phát triển phần mềm cho các dự án và dịch vụ của VNPT, tập trung nghiên
+            cứu chuyên sâu và ứng dụng ngôn ngữ Kotlin để xây dựng các ứng dụng Android hiệu năng cao.
           </>,
           <>
-            Tham gia xây dựng giao diện mobile trên nền tảng android bằng Jetpack Compose và sử dụng Firestore để xây dựng 
-            tính năng chat realtime cho ứng dụng VNPT BMSI - Hệ thống quản lý tòa nhà.
+            Xây dựng giao diện người dùng theo kiến trúc Declarative UI bằng thư viện Jetpack Compose.
+            Áp dụng các design pattern (MVVM) để tách biệt logic và giao diện, tối ưu hóa việc quản lý state
+            và giảm thiểu re-composition không cần thiết.
           </>,
           <>
-            Tham gia phát triển chức năng phân loại phim cho trang web xem phim MobileTV.
+            Thiết kế giao diện màn hình và tích hợp Google Cloud Firestore cho tính năng Chat Realtime trên
+            hệ thống quản lý tòa nhà VNPT BMSI, giải quyết triệt để bài toán đồng bộ tin nhắn tức thời và tối
+            ưu hóa chi phí đọc/ghi dữ liệu.
+          </>,
+          <>
+            Tham gia phát triển và hoàn thiện module phân loại phim theo nội dung và độ tuổi
+            cho nền tảng giải trí web mobiletv và hệ thống quản trị nội dung VNPT CMS.
+          </>,
+          <>
+            Phối hợp cùng đội ngũ kỹ thuật rà soát lỗi, tối ưu hóa bộ nhớ và tham gia hỗ trợ vận
+            hành, tự động hóa quy trình deploy dự án mobileTV lên môi trường Production.
+          </>,
+          <>
+            Xây dựng trang Portal bằng Next.js cho dự án PassV - dự án bán SIM/eSIM Data quốc tế qua
+            cổng PassV. Áp dụng SSR/ISR trong Next.js giúp giảm thời gian tải trang đầu tiên dưới 1.5 giây.
+          </>,
+          <>
+            Thiết kế và phát triển RESTful API (quản lý banner, quản lý người dùng) cho dự án PassV sử
+            dụng Java Spring Boot.
+          </>,
+          <>
+            Thiết kế và triển khai public API lấy danh sách Banner công khai, tối ưu cấu trúc JSON để giảm
+            độ trễ truyền tải đảm bảo hệ thống phản hồi nhanh khi xử lý lượng lớn yêu cầu từ phía Client.
           </>,
         ],
         images: [
@@ -151,7 +175,25 @@ const about: About = {
             Nghiên cứu và ứng dụng các công nghệ mới vào giải quyết đồ án tốt nghiệp.
           </>,
           <>
-            Thiết kế Database, Xây dựng RESTful API, xây dựng giao diện web bằng Next.js và mobile bằng React Native, đóng gói ứng dụng bằng Docker.
+            Xây dựng Database tối ưu cho các luồng nghiệp vụ bằng PostgreSQL.
+          </>,
+          <>
+            Xây dựng hệ thống RESTful API tuân thủ các tiêu chuẩn bảo mật và truy xuất dữ liệu tốc độ cao.
+          </>,
+          <>
+            Phát triển giao diện Web Dashboard quản trị hiện đại, responsive bằng Next.js và ứng dụng di
+            động đa nền tảng bằng React Native.
+          </>,
+          <>
+            Viết các cấu hình Docker (Docker file) để đóng gói toàn bộ Backend, loại bỏ các lỗi
+            xung đột môi trường và deploy thành công lên nền tảng đám mây Render.
+          </>,
+          <>
+            Thiết lập luồng triển khai tự động, đưa hệ thống Web quản lý lên Vercel.
+          </>,
+          <>
+            Khởi tạo, cấu hình và quản trị cơ sở dữ liệu trên nền tảng Cloud Serverless Postgres Neon, đảm
+            bảo hệ thống vận hành 24/7 và an toàn dữ liệu.
           </>,
         ],
         images: [],
