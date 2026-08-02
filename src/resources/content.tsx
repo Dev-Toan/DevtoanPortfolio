@@ -185,7 +185,7 @@ const about: About = {
             động đa nền tảng bằng React Native.
           </>,
           <>
-            Viết các cấu hình Docker (Docker file) để đóng gói toàn bộ Backend, loại bỏ các lỗi
+            Viết các cấu hình Docker (Docker file) để đóng gói toàn bộ/ Backend, loại bỏ các lỗi
             xung đột môi trường và deploy thành công lên nền tảng đám mây Render.
           </>,
           <>
