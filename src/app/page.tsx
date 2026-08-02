@@ -28,7 +28,13 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <>
-      <Column maxWidth="m" gap="xl" horizontal="center" style={{ position: "relative" }}>
+      <Column
+        maxWidth="m"
+        gap="xl"
+        horizontal="center"
+        fillWidth
+        style={{ position: "relative", overflowX: "clip" }}
+      >
         <div className="aurora-glow-1" />
         <div className="aurora-glow-2" />
         <Schema
