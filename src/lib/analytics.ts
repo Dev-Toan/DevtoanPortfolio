@@ -108,6 +108,19 @@ export async function recordVisit(input: {
   }
 }
 
+/**
+ * Wipe all analytics data (both the all-time counter and the recent-events
+ * list). Used by the admin dashboard to clear số liệu cũ đã bị thổi phồng do
+ * prefetch/RSC trước khi có bộ lọc. Returns false when Redis isn't configured.
+ */
+export async function resetStats(): Promise<boolean> {
+  const redis = getRedis();
+  if (!redis) return false;
+
+  await redis.del(TOTAL_KEY, EVENTS_KEY);
+  return true;
+}
+
 // ---- Aggregation (read side) -------------------------------------------------
 
 /** Strip a trailing version number so "Chrome 120.0" groups as "Chrome". */

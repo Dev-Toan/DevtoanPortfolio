@@ -179,6 +179,7 @@ const deviceIcon: Record<string, string> = {
 function Dashboard() {
   const [stats, setStats] = useState<StatsResult | null>(null);
   const [loading, setLoading] = useState(true);
+  const [resetting, setResetting] = useState(false);
   const [error, setError] = useState<string | undefined>();
 
   const load = useCallback(async () => {
@@ -198,6 +199,31 @@ function Dashboard() {
       setLoading(false);
     }
   }, []);
+
+  const reset = useCallback(async () => {
+    if (
+      !window.confirm(
+        "Xóa toàn bộ số liệu truy cập (tổng lượt + lịch sử sự kiện)? Hành động này không thể hoàn tác.",
+      )
+    ) {
+      return;
+    }
+    setResetting(true);
+    setError(undefined);
+    try {
+      const res = await fetch("/api/admin/reset", { method: "POST", cache: "no-store" });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        setError(body.message || `Lỗi ${res.status}`);
+        return;
+      }
+      await load();
+    } catch {
+      setError("Không xóa được số liệu");
+    } finally {
+      setResetting(false);
+    }
+  }, [load]);
 
   useEffect(() => {
     load();
@@ -235,15 +261,27 @@ function Dashboard() {
             Cửa sổ gần nhất: {numberFmt.format(stats.sampleSize)} lượt · giờ Việt Nam (UTC+7)
           </Text>
         </Column>
-        <Button
-          onClick={load}
-          variant="secondary"
-          size="s"
-          prefixIcon="refresh"
-          loading={loading}
-        >
-          Làm mới
-        </Button>
+        <Row gap="8" vertical="center">
+          <Button
+            onClick={load}
+            variant="secondary"
+            size="s"
+            prefixIcon="refresh"
+            loading={loading}
+          >
+            Làm mới
+          </Button>
+          <Button
+            onClick={reset}
+            variant="danger"
+            size="s"
+            prefixIcon="trash"
+            loading={resetting}
+            disabled={resetting}
+          >
+            Xóa số liệu
+          </Button>
+        </Row>
       </Row>
 
       {/* KPI cards */}

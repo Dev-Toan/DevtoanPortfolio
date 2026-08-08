@@ -1,4 +1,4 @@
-allowBuilds:
-  '@biomejs/biome': set this to true or false
-  '@parcel/watcher': set this to true or false
-  sharp: set this to true or false
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@parcel/watcher'
+  - sharp
