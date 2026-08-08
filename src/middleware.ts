@@ -34,7 +34,12 @@ export function middleware(request: NextRequest, event: NextFetchEvent) {
   // Không thống kê chính trang admin để tránh làm nhiễu số liệu.
   const isAdmin = path === "/admin" || path.startsWith("/admin/");
 
-  if (!isAdmin && !isPrefetch && !isRSC) {
+  // Không đếm traffic của chính chủ site. Khi đã đăng nhập admin, request mang
+  // cookie adminToken=authenticated — bỏ qua MỌI trang họ duyệt, không chỉ /admin,
+  // để lượt xem của mình khi kiểm tra/điều hướng site không thổi phồng số liệu.
+  const isAdminUser = request.cookies.get("adminToken")?.value === "authenticated";
+
+  if (!isAdmin && !isAdminUser && !isPrefetch && !isRSC) {
     // Ghi mỗi visit vào Redis — fire-and-forget, không chặn việc trả trang.
     event.waitUntil(
       recordVisit({
