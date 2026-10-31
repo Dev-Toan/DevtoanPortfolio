@@ -118,8 +118,43 @@ const about: About = {
     title: "Kinh nghiệm làm việc",
     experiences: [
       {
-        company: "VNPT-Media",
-        timeframe: "5/2026 - Hiện tại",
+        company: "VNPT Media - VAS",
+        timeframe: "8/2026 - Hiện tại",
+        role: "Cộng tác viên lập trình",
+        achievements: [
+          <>
+            Trực tiếp tham gia quá trình cập nhật module phân loại phim theo nội dung và độ tuổi
+            cho nền tảng giải trí web mobiletv và hệ thống quản trị nội dung VNPT CMS.
+          </>,
+          <>
+            Phối hợp cùng đội vận hành rà soát lỗi và cập nhật module phân loại phim theo độ tuổi 
+            cho nền tảng giải trí web mobiletv và hệ thống quản trị nội dung VNPT CMS lên môi trường
+            production sau khi cập nhật.
+          </>,
+          <>
+            Tham gia phát triển miniapp cho dự án PassV - dự án bán SIM/eSIM Data quốc tế qua cổng PassV
+            bằng framework LynX và LynX DevTool.
+          </>,
+          <>
+            Đóng gói Miniapp cho dự án PassV (bán SIM/eSIM quốc tế) lên HostApp MyVNPT.
+          </>,
+          <>
+            Xây dựng trang Portal bằng Next.js cho dự án PassV - dự án bán SIM/eSIM Data quốc tế qua
+            cổng PassV. Áp dụng SSR/ISR trong Next.js giúp giảm thời gian tải trang đầu tiên dưới 1.5 giây.
+          </>,
+        ],
+        images: [
+          // {
+          //   src: "/images/projects/project-01/cover-01.jpg",
+          //   alt: "Dự án Once UI",
+          //   width: 16,
+          //   height: 9,
+          // },
+        ],
+      },
+      {
+        company: "VNPT Media - VAS",
+        timeframe: "5/2026 - 7/2026",
         role: "Thực tập sinh Mobile",
         achievements: [
           <>
@@ -207,11 +242,6 @@ const about: About = {
       {
         name: "Đại học Công nghiệp Hà Nội",
         description: <>Chuyên ngành Công nghệ thông tin</>,
-      },
-      {
-        name: "Tham gia nghiên cứu khoa học cấp trường",
-        description: <> Đề tài: "Nghiên cứu các thuật toán tối ưu hóa cho bài toán khuyến nghị học tập và dự đoán GPA của sinh viên ngành CNTT HaUI" <br />
-        Phụ trách xây dựng ứng dụng mobile bằng ngôn ngữ java trên nền tảng android để thu thập dữ liệu và hiển thị kết quả khuyến nghị cho sinh viên.</>,
       },
     ],
   },
